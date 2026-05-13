@@ -9,8 +9,8 @@ const PROGRAMS = [
   {
     id: 'dars-e-nizami',
     title: 'Dars e Nizami',
-    description: 'A comprehensive Islamic program covering classical social texts in Fiqh, Tafsir, and Arabic grammar, developed to design qualified Islamic scholars.',
-    image: 'https://picsum.photos/seed/dars/400/300',
+    description: 'An 8-year classical scholarship programme rooted in the Dars-e-Nizami syllabus — covering Fiqh, Usul al-Fiqh, Tafsir, Hadith, Mantiq, Balagha, Nahw, and Sarf. Graduates receive full Ijazah as qualified Islamic scholars.', 
+    image: 'https://images.unsplash.com/photo-1585036156171-384164a8c675?w=400&h=300&fit=crop&auto=format',
   },
   {
     id: 'hifz',
