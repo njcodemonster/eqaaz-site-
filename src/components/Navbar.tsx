@@ -6,16 +6,22 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import type { Page } from '../App';
 
 const NAV_LINKS = [
-  { name: 'Home', href: '#' },
-  { name: 'Courses', href: '#courses' },
-  { name: 'Admission', href: '#admission' },
-  { name: 'About Us', href: '#about' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '#', page: 'home' as Page },
+  { name: 'Courses', href: '#courses', page: null },
+  { name: 'Admission', href: '#admission', page: null },
+  { name: 'About Us', href: '#about', page: 'about' as Page },
+  { name: 'Contact', href: '#contact', page: null },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  setPage: (p: Page) => void;
+  currentPage: Page;
+}
+
+export default function Navbar({ setPage, currentPage }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -52,9 +58,10 @@ export default function Navbar() {
             {NAV_LINKS.map((link) => (
               <a
                 key={link.name}
-                href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-[#008080] ${
-                  scrolled ? 'text-gray-700' : 'text-gray-800'
+                href={link.page ? undefined : link.href}
+                onClick={link.page ? (e) => { e.preventDefault(); setPage(link.page!); } : undefined}
+                className={`text-sm font-medium transition-colors hover:text-[#008080] cursor-pointer ${
+                  currentPage === link.page ? 'text-[#008080] font-semibold' : scrolled ? 'text-gray-700' : 'text-gray-800'
                 }`}
               >
                 {link.name}
@@ -90,9 +97,11 @@ export default function Navbar() {
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.name}
-                  href={link.href}
-                  className="block px-3 py-3 text-base font-medium text-gray-700 hover:text-[#008080] hover:bg-gray-50 rounded-lg transition-colors"
-                  onClick={() => setIsOpen(false)}
+                  href={link.page ? undefined : link.href}
+                  onClick={link.page ? (e) => { e.preventDefault(); setPage(link.page!); setIsOpen(false); } : () => setIsOpen(false)}
+                  className={`block px-3 py-3 text-base font-medium hover:text-[#008080] hover:bg-gray-50 rounded-lg transition-colors cursor-pointer ${
+                    currentPage === link.page ? 'text-[#008080] font-semibold' : 'text-gray-700'
+                  }`}
                 >
                   {link.name}
                 </a>
