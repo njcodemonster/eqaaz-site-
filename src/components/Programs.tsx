@@ -4,6 +4,7 @@
  */
 
 import { motion } from 'motion/react';
+import hifzImage from "../assets/hifz.png";
 
 const PROGRAMS = [
   {
@@ -15,8 +16,8 @@ const PROGRAMS = [
   {
     id: 'hifz',
     title: 'Hifz',
-    description: 'A structured program focused on memorization of the Holy Quran and spiritual development, building a strong foundation in Islamic teachings.',
-    image: 'https://picsum.photos/seed/hifz/400/300',
+    description: 'برنامج منظم يركز على حفظ القرآن الكريم والتطوير الروحي، لبناء أساس قوي في التعاليم الإسلامية. قرآن پاک کے حفظ اور روحانی نشوونما پر مرکوز ایک منظم پروگرام، جو اسلامی تعلیمات میں ایک مضبوط بنیاد بناتا ہے۔',
+    image: hifzImage,
   },
   {
     id: 'huffaz-arabic',
